@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Controller/LuckyController.php
+// src/AppBundle/Controller/DashboardController.php
 namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -10,19 +10,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\Finder\Finder;
 
-class LuckyController extends Controller
+class DashboardController extends Controller
 {
     /**
-     * @Route("/lucky/number")
+     * @Route("/admin/dashboard")
      */
     public function numberAction()
     {
-    	$finder = new Finder();
-		$finder->in('../data/');
-        $number = mt_rand(0, 100);
         $templating = $this->container->get("templating");
 
-        $html = $templating->render('lucky/number.html.twig',array('number'=>$number));
+        $html = $templating->render('admin/dashboard.html.twig',array());
 
         return new Response($html);
     }
